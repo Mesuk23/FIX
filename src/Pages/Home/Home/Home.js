@@ -1,9 +1,10 @@
 import React from 'react';
+import Carousel from '../../Shared/Carousel/Carousel';
 
 const Home = () => {
     return (
         <div>
-            Home
+            <Carousel></Carousel>
         </div>
     );
 };

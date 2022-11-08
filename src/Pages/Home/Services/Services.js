@@ -18,7 +18,7 @@ const Services = () => {
             {
                 services.map(service => <AllServices key={service._id} service={service}></AllServices>)
             }
-            <Link to='/allServices' >
+            <Link to='/services' >
                 <div className='my-3 text-center'>
                     <Button>See All</Button>
                 </div>

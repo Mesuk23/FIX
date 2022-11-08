@@ -21,7 +21,7 @@ const Checkout = () => {
 
 
 
-            <div className="card w-full text-center shadow-2xl bg-base-100">
+            <div className="card w-full text-center shadow-2xl bg-base-100 my-5">
                 <h1 className="text-center text-4xl text-rose-900 font-bold my-3">Checkout</h1>
                 <div className="card-body">
                     <div className="form-control">

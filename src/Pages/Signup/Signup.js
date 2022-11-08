@@ -1,10 +1,11 @@
 import React, { useContext, useState } from 'react';
+import { FaGoogle } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { authContext } from '../../Context/ContextProvider';
 
 const Signup = () => {
 
-    const { handleSignUp } = useContext(authContext);
+    const { handleSignUp, handleGoogleLogIn } = useContext(authContext);
 
     const navigate = useNavigate();
 
@@ -32,8 +33,19 @@ const Signup = () => {
                 console.error(err)
                 setError(err)
             })
+    }
 
-
+    const handleGoogle = () => {
+        handleGoogleLogIn()
+            .then(newUser => {
+                const user = newUser.user;
+                console.log(user);
+                navigate(from, { replace: true });
+            })
+            .catch(err => {
+                console.error(err)
+                setError(err)
+            })
     }
 
     return (
@@ -75,6 +87,9 @@ const Signup = () => {
                             </div>
                             <div className="form-control mt-6">
                                 <button className="btn btn-primary">Sign Up</button>
+                            </div>
+                            <div className="form-control mt-6">
+                                <button onClick={handleGoogle} className="btn btn-outline btn-success"><FaGoogle className='mr-2' />  Sign in with google</button>
                             </div>
                         </form>
                     </div>

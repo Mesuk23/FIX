@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { authContext } from '../../Context/ContextProvider';
 
 const Signup = () => {
@@ -26,10 +27,10 @@ const Signup = () => {
 
     return (
         <div>
-            <div className="hero min-h-screen bg-base-200">
+            <div className="hero min-h-screen bg-base-200 text-neutral">
                 <div className="hero-content flex-col lg:flex-row-reverse">
-                    <div className="text-center lg:text-left py-3">
-                        <h1 className="text-5xl font-bold">Login now!</h1>
+                    <div className="text-center lg:text-left py-3 ">
+                        <h1 className="text-5xl font-bold">Register Now!</h1>
                         <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
                     </div>
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
@@ -51,9 +52,11 @@ const Signup = () => {
                                     <span className="label-text">Password</span>
                                 </label>
                                 <input name='password' type="password" placeholder="Enter your password" className="input input-bordered" required />
-                                <label className="label">
-                                    <a href="/" className="label-text-alt link link-hover">Forgot password?</a>
-                                </label>
+
+                                <div>
+                                    Already have an account? Please <Link to='/login' className='text-blue-600'>Log in</Link>
+                                </div>
+
                             </div>
                             <div className="form-control mt-6">
                                 <button className="btn btn-primary">Sign Up</button>

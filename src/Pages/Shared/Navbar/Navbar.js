@@ -1,7 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { FaUserAlt } from 'react-icons/fa';
+import { authContext } from '../../../Context/ContextProvider';
 
 const Navbar = () => {
+    const { user, handleLogOut } = useContext(authContext);
+    const logOut = () => {
+        handleLogOut()
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .then(error => console.log(error))
+    }
+
     return (
         <div className="navbar bg-neutral text-white">
             <div className="navbar-start">
@@ -34,7 +46,18 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a href='/' className="btn">Get started</a>
+                {
+                    user?.uid ? <>
+                        <Link className='mr-3' onClick={logOut}>Log Out</Link>
+                        {
+                            user?.photoURL ? <><img className='mr-3' roundedCircle style={{ height: '30px' }} src={user?.photoURL} alt="" /></> : <FaUserAlt />
+
+                        }
+                    </> : <>
+                        <Link className='mr-3' to='/signup'>Sign Up</Link>
+                        <Link className='mr-3' to='/login'>Log In</Link>
+                    </>
+                }
             </div>
         </div>
     );

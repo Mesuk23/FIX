@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { authContext } from '../../Context/ContextProvider';
 
 const Login = () => {
@@ -22,7 +23,7 @@ const Login = () => {
     }
 
     return (
-        <div className="hero min-h-screen bg-base-200">
+        <div className="hero min-h-screen bg-base-200 text-neutral">
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <div className="text-center lg:text-left py-3">
                     <h1 className="text-5xl font-bold">Login now!</h1>
@@ -41,9 +42,9 @@ const Login = () => {
                                 <span className="label-text">Password</span>
                             </label>
                             <input name='password' type="password" placeholder="Enter your password" className="input input-bordered" required />
-                            <label className="label">
-                                <a href="/" className="label-text-alt link link-hover">Forgot password?</a>
-                            </label>
+                            <div>
+                                New to this site? Please <Link to='/signup' className='text-blue-600'>Register</Link>
+                            </div>
                         </div>
                         <div className="form-control mt-6">
                             <button className="btn btn-primary">Sign Up</button>

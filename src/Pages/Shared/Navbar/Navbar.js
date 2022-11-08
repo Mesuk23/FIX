@@ -50,7 +50,7 @@ const Navbar = () => {
                     user?.uid ? <>
                         <Link className='mr-3' onClick={logOut}>Log Out</Link>
                         {
-                            user?.photoURL ? <><img className='mr-3' style={{ height: '30px', borderRadius: "15px" }} src={user?.photoURL} alt="" />{user.name}</> : <FaUserAlt />
+                            user?.photoURL ? <><img className='mr-3' style={{ height: '30px', borderRadius: "15px" }} src={user?.photoURL} alt="" /></> : <FaUserAlt />
 
 
                         }

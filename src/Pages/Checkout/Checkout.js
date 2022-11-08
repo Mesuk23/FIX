@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import { authContext } from '../../Context/ContextProvider';
 
 const Checkout = () => {
+    const { user } = useContext(authContext);
     const { description, name, photo, price, ratings } = useLoaderData()
     return (
         <div className=' text-center'>
@@ -21,7 +23,7 @@ const Checkout = () => {
 
 
 
-            <div className="card w-full text-center shadow-2xl bg-base-100 my-5">
+            <div className="card w-full text-center shadow-2xl bg-base-100 my-5 text-neutral">
                 <h1 className="text-center text-4xl text-rose-900 font-bold my-3">Checkout</h1>
                 <div className="card-body">
                     <div className="form-control">
@@ -40,7 +42,7 @@ const Checkout = () => {
                         <label className="label">
                             <span className="label-text">Email</span>
                         </label>
-                        <input type="email" placeholder="Enter Your Email" className="input input-bordered" />
+                        <input type="email" defaultValue={user?.email} placeholder="Enter Your Email" className="input input-bordered" readOnly />
                     </div>
                     <div className="form-control">
                         <label className="label">

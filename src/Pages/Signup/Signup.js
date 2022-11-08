@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { FaGoogle } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { authContext } from '../../Context/ContextProvider';
+import useTitle from '../../Hooks/Usetitle';
 
 const Signup = () => {
 
@@ -13,6 +14,8 @@ const Signup = () => {
 
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
+
+    useTitle('Register')
 
     const createUser = event => {
         event.preventDefault();

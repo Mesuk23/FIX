@@ -1,10 +1,12 @@
 
 import { useLoaderData } from 'react-router-dom';
+import useTitle from '../../Hooks/Usetitle';
 import Reviews from '../Reviews/Reviews';
 import OrderNow from '../Shared/OrderNow/OrderNow';
 
 const Checkout = () => {
-    const { description, name, photo, price, ratings } = useLoaderData()
+    const { description, name, photo, price, ratings } = useLoaderData();
+    useTitle('Checkout');
     return (
         <div className=' text-center'>
             <div className="card w-full bg-neutral shadow-xl my-5 mx-2">

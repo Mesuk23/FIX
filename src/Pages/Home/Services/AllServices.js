@@ -7,12 +7,12 @@ const AllServices = ({ service }) => {
     const { _id, description, name, photo, price, ratings } = service;
     return (
         <div>
-            <div className="card lg:card-side shadow-xl my-3 bg-neutral text-white">
+            <div className="card lg:card-side shadow-xl my-3 bg-neutral py-2 text-white">
                 <div>
                     <PhotoProvider>
                         <figure>
                             <PhotoView src={photo}>
-                                <img src={photo} className='object-cover w-96 h-72' alt="Album" />
+                                <img src={photo} className='object-cover w-96 h-72 ml-2' alt="Album" />
                             </PhotoView>
 
 
@@ -26,7 +26,7 @@ const AllServices = ({ service }) => {
                     <p className="text-xl"><span className='text-2xl text-orange-600'>Price: </span>{price}</p>
                     <p><span className=' text-orange-600'>Rating: </span>{ratings}</p>
                     <div className="card-actions justify-end">
-                        <Link to={`services/${_id}`}>
+                        <Link to={`checkout/${_id}`}>
                             <button className="btn btn-primary">Checkout</button>
                         </Link>
 

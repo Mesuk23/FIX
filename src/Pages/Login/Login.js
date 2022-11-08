@@ -1,9 +1,15 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { authContext } from '../../Context/ContextProvider';
 
 const Login = () => {
     const { handleLogIn } = useContext(authContext);
+    const navigate = useNavigate();
+
+    const [error, setError] = useState(false);
+
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
 
     const Login = event => {
         event.preventDefault();
@@ -16,8 +22,12 @@ const Login = () => {
                 const user = newUser.user;
                 console.log(user);
                 form.reset();
+                navigate(from, { replace: true });
             })
-            .catch(err => console.error(err))
+            .catch(err => {
+                console.error(err);
+                setError(err);
+            })
 
 
     }
@@ -42,6 +52,11 @@ const Login = () => {
                                 <span className="label-text">Password</span>
                             </label>
                             <input name='password' type="password" placeholder="Enter your password" className="input input-bordered" required />
+                            <p>
+                                {
+                                    error && <p className='text-rose-700'>{error}</p>
+                                }
+                            </p>
                             <div>
                                 New to this site? Please <Link to='/signup' className='text-blue-600'>Register</Link>
                             </div>

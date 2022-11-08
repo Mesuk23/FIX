@@ -1,10 +1,17 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { authContext } from '../../Context/ContextProvider';
 
 const Signup = () => {
 
     const { handleSignUp } = useContext(authContext);
+
+    const navigate = useNavigate();
+
+    const [error, setError] = useState(false);
+
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
 
     const createUser = event => {
         event.preventDefault();
@@ -19,8 +26,12 @@ const Signup = () => {
                 const user = newUser.user;
                 console.log(user);
                 form.reset();
+                navigate(from, { replace: true });
             })
-            .catch(err => console.error(err))
+            .catch(err => {
+                console.error(err)
+                setError(err)
+            })
 
 
     }
@@ -52,7 +63,11 @@ const Signup = () => {
                                     <span className="label-text">Password</span>
                                 </label>
                                 <input name='password' type="password" placeholder="Enter your password" className="input input-bordered" required />
-
+                                <p>
+                                    {
+                                        error && <p className='text-rose-700'>{error}</p>
+                                    }
+                                </p>
                                 <div>
                                     Already have an account? Please <Link to='/login' className='text-blue-600'>Log in</Link>
                                 </div>

@@ -6,6 +6,7 @@ import AllReviews from './AllReviews';
 const Reviews = () => {
     const { user } = useContext(authContext);
     const { name } = useLoaderData();
+
     const [reviews, setReviews] = useState([]);
     useEffect(() => {
         fetch(`http://localhost:5000/service-reviews?service=${name}`)

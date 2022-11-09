@@ -1,9 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { authContext } from '../../Context/ContextProvider';
+import useTitle from '../../Hooks/Usetitle';
 import MyAllReviews from './MyAllReviews';
 
 const MyReviews = () => {
     const { user } = useContext(authContext);
+    useTitle('My Reviews')
     const [reviews, setReviews] = useState([]);
 
     useEffect(() => {
@@ -37,6 +39,10 @@ const MyReviews = () => {
 
     return (
         <div>
+            {
+                reviews.length === 0 && <p className="text-center p-5 text-5xl text-slate-100">No Reviews Found</p>
+
+            }
             {
                 reviews.map(review => <MyAllReviews key={review._id} allReview={review} handleDelete={handleDelete}></MyAllReviews>)
             }

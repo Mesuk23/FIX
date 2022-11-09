@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import { authContext } from '../../Context/ContextProvider';
 import AllReviews from './AllReviews';
 
@@ -9,7 +9,7 @@ const Reviews = () => {
 
     const [reviews, setReviews] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5000/service-reviews?service=${name}`)
+        fetch(`https://assignment-11-server-nine.vercel.app/service-reviews?service=${name}`)
             .then(res => res.json())
             .then(data => setReviews(data))
     }, [])
@@ -30,7 +30,7 @@ const Reviews = () => {
             name
         }
 
-        fetch('http://localhost:5000/reviews', {
+        fetch('https://assignment-11-server-nine.vercel.app/reviews', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -43,6 +43,9 @@ const Reviews = () => {
                 if (data.acknowledged) {
                     alert('Reviews added successfully');
                     form.reset();
+                    const remaining = reviews.filter(review => review.name === name);
+                    setReviews(remaining)
+
                 }
             })
             .catch(err => console.error(err))
@@ -74,11 +77,15 @@ const Reviews = () => {
                     <div>
                         <textarea name='review' className="textarea w-full my-3" placeholder="Leave a review"></textarea>
                         <div className='text-center'>
-                            <button className='btn btn-secondary'>Submit</button>
+                            {
+                                user?.uid ? <button className='btn btn-secondary'>Submit</button> : <p className='text-white'>Please <Link className='text-blue-700' to='/login'>log in</Link> to submit a comment</p>
+                            }
+
                         </div>
 
                     </div>
                 </form>
+
             </div>
 
 

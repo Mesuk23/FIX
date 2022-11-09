@@ -47,13 +47,13 @@ const router = createBrowserRouter([
       },
       {
         path: '/services/checkout/:id',
-        element: <PrivateRoutes><Checkout></Checkout></PrivateRoutes>,
-        loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`)
+        element: <Checkout></Checkout>,
+        loader: ({ params }) => fetch(`https://assignment-11-server-nine.vercel.app/services/${params.id}`)
       },
       {
         path: '/checkout/:id',
-        element: <PrivateRoutes><Checkout></Checkout></PrivateRoutes>,
-        loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`)
+        element: <Checkout></Checkout>,
+        loader: ({ params }) => fetch(`https://assignment-11-server-nine.vercel.app//services/${params.id}`)
       },
       {
         path: '*',

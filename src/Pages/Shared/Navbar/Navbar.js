@@ -42,7 +42,10 @@ const Navbar = () => {
                         </Link>
 
                     </li>
-                    <li><Link to='/services' >Blog</Link></li>
+                    <li><Link to='/blog' >Blog</Link></li>
+                    {
+                        user?.uid && <li><Link to='/myreviews' >My Reviews</Link></li>
+                    }
                 </ul>
             </div>
             <div className="navbar-end">

@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { authContext } from '../../Context/ContextProvider';
 import MyAllReviews from '../MyReviews/MyAllReviews';
+import AllReviews from './AllReviews';
 
 const Reviews = () => {
     const { user } = useContext(authContext);
@@ -54,7 +55,7 @@ const Reviews = () => {
             <div className='mb-3'>
                 <h1 className="text-4xl text-center text-slate-200 my-5">Reviews</h1>
                 {
-                    reviews.map(review => <MyAllReviews key={review._id} allReview={review}></MyAllReviews>)
+                    reviews.map(review => <AllReviews key={review._id} allReview={review}></AllReviews>)
                 }
                 <hr />
             </div>

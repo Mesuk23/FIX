@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { authContext } from '../../Context/ContextProvider';
-import MyAllReviews from '../MyReviews/MyAllReviews';
 import AllReviews from './AllReviews';
 
 const Reviews = () => {
@@ -13,6 +12,7 @@ const Reviews = () => {
             .then(res => res.json())
             .then(data => setReviews(data))
     }, [])
+
 
     const handleReview = event => {
         event.preventDefault();

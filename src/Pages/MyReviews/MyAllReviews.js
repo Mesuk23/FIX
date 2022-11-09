@@ -2,10 +2,13 @@ import React, { useContext } from 'react';
 import { FaUserAlt } from 'react-icons/fa';
 import { authContext } from '../../Context/ContextProvider';
 
-const MyAllReviews = ({ allReview }) => {
+const MyAllReviews = ({ allReview, handleDelete }) => {
 
     const { user } = useContext(authContext);
-    const { review, name, service } = allReview;
+    const { _id, review, name, service } = allReview;
+
+
+
 
     return (
         <div>
@@ -22,7 +25,7 @@ const MyAllReviews = ({ allReview }) => {
                     <p > <span className='text-orange-600'>Reviews: </span>{review}</p>
 
                     <div className="card-actions justify-end">
-                        <button className="btn btn-primary">Delete</button>
+                        <button onClick={() => handleDelete(_id)} className="btn btn-primary">Delete</button>
                         <button className="btn btn-primary">Update</button>
                     </div>
                 </div>

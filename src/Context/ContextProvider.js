@@ -12,10 +12,12 @@ const ContextProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
 
     const handleSignUp = (email, password) => {
+        setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
     }
 
     const handleLogIn = (email, password) => {
+        setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
     }
 

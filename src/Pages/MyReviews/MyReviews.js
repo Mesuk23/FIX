@@ -7,6 +7,7 @@ const MyReviews = () => {
     const { user } = useContext(authContext);
     useTitle('My Reviews')
     const [reviews, setReviews] = useState([]);
+    console.log(reviews)
 
     useEffect(() => {
         fetch(`https://assignment-11-server-nine.vercel.app/reviews?email=${user?.email}`)
@@ -15,6 +16,52 @@ const MyReviews = () => {
     }, [user?.email])
 
 
+    const handleUpdate = (event, _id) => {
+        event.preventDefault();
+        // console.log(user);
+        fetch(`http://localhost:5000/reviews/${_id}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(reviews)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    alert('user updated')
+                    console.log(data);
+                }
+
+            })
+    }
+
+    // const handleUpdate = (event, _id) => {
+    //     event.preventDefault();
+    //     const form = event.target;
+    //     console.log(user)
+
+    //     fetch(`http://localhost:5000/reviews/${_id}`, {
+    //         method: 'PUT',
+    //         headers: {
+    //             "content-type": "application/json"
+    //         },
+    //         body: JSON.stringify(reviews)
+    //     })
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             console.log(data)
+    //         })
+    // }
+
+    const handleChange = event => {
+        const field = event.target.name;
+        const value = event.target.value;
+        const newReview = { ...reviews };
+        newReview[field] = value;
+        setReviews(newReview);
+
+    }
 
     const handleDelete = _id => {
         const proceed = window.confirm('Are you sure to delete the comment?');
@@ -44,8 +91,9 @@ const MyReviews = () => {
 
             }
             {
-                reviews.map(review => <MyAllReviews key={review._id} allReview={review} handleDelete={handleDelete}></MyAllReviews>)
+                reviews.map(review => <MyAllReviews handleChange={handleChange} handleUpdate={handleUpdate} key={review._id} allReview={review} handleDelete={handleDelete}></MyAllReviews>)
             }
+
 
         </div>
     );

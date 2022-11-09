@@ -53,7 +53,7 @@ const router = createBrowserRouter([
       {
         path: '/checkout/:id',
         element: <Checkout></Checkout>,
-        loader: ({ params }) => fetch(`https://assignment-11-server-nine.vercel.app//services/${params.id}`)
+        loader: ({ params }) => fetch(`https://assignment-11-server-nine.vercel.app/services/${params.id}`)
       },
       {
         path: '*',

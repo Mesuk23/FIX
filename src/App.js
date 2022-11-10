@@ -65,7 +65,7 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <div className='lg:w-4/5 mx-auto'>
+    <div className='lg:w-4/5 mx-auto text-white'>
       <RouterProvider router={router}></RouterProvider>
     </div>
   );

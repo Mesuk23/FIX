@@ -20,26 +20,10 @@ const Login = () => {
         handleLogIn(email, password)
             .then(newUser => {
                 const user = newUser.user;
-                const currentUser = {
-                    email: user.email
-                }
                 console.log(user);
                 form.reset();
+                navigate(from, { replace: true });
 
-
-                fetch('https://assignment-11-server-mesuk23.vercel.app/jwt', {
-                    method: 'POST',
-                    headers: {
-                        "content-type": "application/json"
-                    },
-                    body: JSON.stringify(currentUser)
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        console.log(data)
-                        localStorage.setItem('token', data.token)
-                        navigate(from, { replace: true });
-                    })
             })
             .catch(err => {
                 console.error(err);
@@ -64,8 +48,8 @@ const Login = () => {
                         Please log in to the website for secure connection. Explore the new by us. We are here to providing you the best.
                     </p>
                 </div>
-                <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                    <form onSubmit={Login} className="card-body">
+                <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 text-neutral">
+                    <form onSubmit={Login} className="card-body bg-base-100 text-neutral">
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>

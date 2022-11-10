@@ -10,7 +10,12 @@ const MyReviews = () => {
     console.log(reviews)
 
     useEffect(() => {
-        fetch(`https://assignment-11-server-nine.vercel.app/reviews?email=${user?.email}`)
+        fetch(`https://assignment-11-server-mesuk23.vercel.app/reviews?email=${user?.email}`)
+            // {
+            //     headers: {
+            //         authorization: `Bearer ${localStorage.getItem('token')}`
+            //     }
+            // }
             .then(res => res.json())
             .then(data => setReviews(data))
     }, [user?.email])
@@ -19,7 +24,7 @@ const MyReviews = () => {
     const handleUpdate = (event, _id) => {
         event.preventDefault();
         // console.log(user);
-        fetch(`http://localhost:5000/reviews/${_id}`, {
+        fetch(`https://assignment-11-server-mesuk23.vercel.app/reviews/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -57,9 +62,9 @@ const MyReviews = () => {
     const handleChange = event => {
         const field = event.target.name;
         const value = event.target.value;
-        const newReview = { ...reviews };
-        newReview[field] = value;
-        setReviews(newReview);
+        // const newReview = { ...reviews };
+        // newReview[field] = value;
+        // setReviews(newReview);
 
     }
 
@@ -87,7 +92,7 @@ const MyReviews = () => {
     return (
         <div>
             {
-                reviews.length === 0 && <p className="text-center p-5 text-5xl text-slate-100">No Reviews Found</p>
+                reviews?.length === 0 && <p className="text-center p-5 text-5xl text-slate-100">No Reviews Found</p>
 
             }
             {

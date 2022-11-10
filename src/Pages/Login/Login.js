@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { authContext } from '../../Context/ContextProvider';
 
 const Login = () => {
-    const { handleLogIn } = useContext(authContext);
+    const { handleLogIn, loading } = useContext(authContext);
     const navigate = useNavigate();
 
     const [error, setError] = useState(false);
@@ -20,14 +20,37 @@ const Login = () => {
         handleLogIn(email, password)
             .then(newUser => {
                 const user = newUser.user;
+                const currentUser = {
+                    email: user.email
+                }
                 console.log(user);
                 form.reset();
-                navigate(from, { replace: true });
+
+
+                fetch('https://assignment-11-server-mesuk23.vercel.app/jwt', {
+                    method: 'POST',
+                    headers: {
+                        "content-type": "application/json"
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+                        localStorage.setItem('token', data.token)
+                        navigate(from, { replace: true });
+                    })
             })
             .catch(err => {
                 console.error(err);
                 setError(err);
             })
+
+        if (loading) {
+            return <button className="btn loading my-5">loading</button>
+        }
+
+
 
 
     }
@@ -64,7 +87,7 @@ const Login = () => {
                             </div>
                         </div>
                         <div className="form-control mt-6">
-                            <button className="btn btn-primary">Sign Up</button>
+                            <button className="btn btn-primary">Log in</button>
                         </div>
                     </form>
                 </div>

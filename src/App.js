@@ -48,12 +48,12 @@ const router = createBrowserRouter([
       {
         path: '/services/checkout/:id',
         element: <Checkout></Checkout>,
-        loader: ({ params }) => fetch(`https://assignment-11-server-nine.vercel.app/services/${params.id}`)
+        loader: ({ params }) => fetch(`https://assignment-11-server-mesuk23.vercel.app/services/${params.id}`)
       },
       {
         path: '/checkout/:id',
         element: <Checkout></Checkout>,
-        loader: ({ params }) => fetch(`https://assignment-11-server-nine.vercel.app/services/${params.id}`)
+        loader: ({ params }) => fetch(`https://assignment-11-server-mesuk23.vercel.app/services/${params.id}`)
       },
       {
         path: '*',

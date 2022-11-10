@@ -6,7 +6,7 @@ import useTitle from '../../Hooks/Usetitle';
 
 const Signup = () => {
 
-    const { handleSignUp, handleGoogleLogIn } = useContext(authContext);
+    const { handleSignUp, handleGoogleLogIn, loading } = useContext(authContext);
 
     const navigate = useNavigate();
 
@@ -49,6 +49,11 @@ const Signup = () => {
                 console.error(err)
                 setError(err)
             })
+    }
+
+
+    if (loading) {
+        return <button className="btn loading my-5">loading</button>
     }
 
     return (

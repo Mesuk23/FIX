@@ -38,7 +38,7 @@ const ContextProvider = ({ children }) => {
     }, [])
 
 
-    const authInfo = { user, loading, handleSignUp, handleLogIn, handleLogOut, handleGoogleLogIn }
+    const authInfo = { user, loading, handleSignUp, handleLogIn, handleLogOut, handleGoogleLogIn, setLoading }
     return (
         <div>
             <authContext.Provider value={authInfo}>

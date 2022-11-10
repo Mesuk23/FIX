@@ -9,7 +9,7 @@ const Reviews = () => {
 
     const [reviews, setReviews] = useState([]);
     useEffect(() => {
-        fetch(`https://assignment-11-server-nine.vercel.app/service-reviews?service=${name}`)
+        fetch(`https://assignment-11-server-mesuk23.vercel.app/service-reviews?service=${name}`)
             .then(res => res.json())
             .then(data => setReviews(data))
     }, [])
@@ -34,7 +34,7 @@ const Reviews = () => {
             name
         }
 
-        fetch('https://assignment-11-server-nine.vercel.app/reviews', {
+        fetch('https://assignment-11-server-mesuk23.vercel.app/reviews', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

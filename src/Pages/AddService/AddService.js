@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import useTitle from '../../Hooks/Usetitle';
 
 const AddService = () => {
     const [services, setServices] = useState([])
+    useTitle('Add Service');
 
     const handleService = event => {
         event.preventDefault();
@@ -23,7 +25,7 @@ const AddService = () => {
 
 
 
-        fetch('http://localhost:5000/services', {
+        fetch('https://assignment-11-server-mesuk23.vercel.app/services', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
